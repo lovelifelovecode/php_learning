@@ -1,0 +1,907 @@
+'是直接输出，"是运行之后输出
+
+mysql数据库：http://localhost/phpmyadmin/  
+
+日期：<?php echo date("Y-m-d H:i:s ") ?> //php语言默认的标准时间是格林威治时间，修改方法有二：其一，修改php.ini文件设置，找到[date]下的";date.timezone="选项，改成"date.timezone=Asia/Hong_Kong"，然后重启apache服务器。其二，在函数前添加函数
+"date_default_timezone_set("Asia/Hong_Kong");"即可,或者是"ini_set('date.timezone','Asia/Shanghai');"
+获取当前时区：echo date_default_timezone_get();
+
+注释：单行注释//xxxx,多行注释/*xxxx*/,shell风格注释#xxx.
+在注释符号之后行结束之前，或者php结束标记之前的所有内容都是注释。
+//hear is a comment ?>here is not(注意，here is not将被当做是html。注释里不能出现?>，否则解析器会认为是php脚本结束。）
+
+服务dos代码：services.msc
+
+整形：数字0开头的是八进制，因为十进制是不会有0开头的，ox开头的是十六进制。
+
+php中不是只有false值才为假，这些特殊情况是：0、0.0,"0",空字符串("")和只声明但没有赋值的数组等.
+
+.连接符：.连接符不能直接挨着数字，前后都要空一格格，如：echo '传统书写格式：3.14159265359= '. 3.14159265359 .'<p>';
+
+定义简单的字符串是用单引号比较合适，如果用双引号，php将要话费一些时间来处理。
+
+null型：被赋予空值的情况有一下3种。
+a没有赋值任何值。
+b被赋予null值。
+c被unset()函数处理过的变量。
+
+将指定字符串转换成其他类型:
+(boolean)$num、(boolean)$str
+(string)$boo、(string)$flo
+(integer)$boo、(integer)$str
+(float)$str、(float)$str
+(aray)$str
+(object)$str
+   ps:$a=7;  $a=(string)$a;
+
+PHP常用的预定义常量
+PHP_VERSION：PHP版本号
+PHP_OS：操作系统类型
+PHP_SAPI：当前使用的PHP接口类型
+PHP_EOL：换行符
+DEFAULT_INCLUDE_PATH：默认的包含目录
+__LINE__：当前所在的行号
+__FILE__：当前文件的绝对路径
+__DIR__：当前文件的目录路径（末尾不包含斜线）
+__FUNCTION__：函数名称
+__CLASS__：类名称
+__NAMESPACE__：命名空间名
+
+
+转义字符；
+\a  响铃(BEL)
+\b  退格(BS) ，将当前位置移到前一列
+\f  换页(FF)，将当前位置移到下页开头
+\n  换行(LF) ，将当前位置移到下一行开头
+\r  回车(CR) ，将当前位置移到本行开头
+\t  水平制表(HT) （跳到下一个TAB位置）
+\v  垂直制表(VT)
+\\  代表一个反斜线字符''\'
+\'  代表一个单引号（撇号）字符
+\"  代表一个双引号字符
+\0  空字符(NULL)
+\ddd  1到3位八进制数所代表的任意字符
+\xhh  1到2位十六进制所代表的任意字符
+
+Monday    星期一
+Tuesday   星期二
+Wednesday 星期三
+Thursday  星期四
+Friday    星期五
+Saturday  星期六
+Sunday 星期日
+
+
+switch语句执行时，即使遇到符合要求的case语句段，也会继往下执行，直到switch结束，为了避锅免这种浪时间和资源的情况发生，每个case语句段后一定要加上break；
+
+do...while的while语句括号后面记得“;”
+
+表格参数：Cellpadding 和Cellspacing 属性的使用方法。Cellpading 的意思是单元格的边距，指
+的是字与单元格边框的距离。Cellspacing 的意思是单元格间距，指的是单元格之间的距离。
+
+表格参数：colspad跨列，rowspad跨行
+<table width="200" border="1">
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td rowspan="2">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+div居中使用"margin:0 auto; width:1000px;"
+
+输出php版本信息代码：echo phpinfo();
+
+include与require的区别：include引进和读取，requir相当与把源文件复制过来
+include与dinclude_once的区别：include_once导入时会先检测文件是否在该页面的其他部分被引用过
+require与require_once的区别：require_once导入时会先检测文件是否在该页面的其他部分被引用过,require如果调用的文件找不到就会立刻停止脚本的运行，include就继续运行，被显示警告。
+
+print与printf的区别：print输出，printf语句格式化输出
+ 
+
+ switc输出今天是星期几
+<?php 
+$a=3;
+switch($a){
+case "1" : echo "1";
+break;
+
+case "2" : echo "2";
+break;
+
+case "3" :echo "3";
+break;
+}
+?> 
+
+
+对关键字进行高亮显示代码：$str="西游记很好看";
+  $keyword="西游记";
+  echo str_replace($keyword,"<font color=red><b>$keyword</b></font>",$str);
+
+判读闰年：if(!empty($_POST['Button']) && isset($_POST['Button'])){
+  $year=$_POST['txt_year'];
+  $result =($year%4==0 && $year%100!=0)||($year%400==0)?$year."是闰年":$year."不是闰年";
+ps:
+<body>
+<table width="392" height="101" border="1" align="center" cellpadding="1" cellspacing="1" bordercolor="#009900" bgcolor="#CCFF00">
+ <tr>
+ <td height="25" colspan="2" align="center" class="STYLE5">判断指定的年份是否为闰年</td>
+ </tr>
+  <tr>
+    <td width="160" height="30" bgcolor="#FFFF99"><span class="STYLE3">请输入一个四位数的年份：</span></td>
+    <td width="219" bgcolor="#FFFF99">
+  <!--表单-->
+<form name="form1" method="post" action="">
+  <table width="196" height="29" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="136"><input name="txt_year" type="text" value="" size="20">      </td>
+        <td width="60">&nbsp;
+          <input type="submit" name="Button" value="计算"></td>
+      </tr>
+    </table>
+</form> 
+  <!--表单-->
+      </td>
+  </tr>
+  <tr>
+    <td height="37" colspan="2" align="center">
+<?php
+if(!empty($_POST['Button']) && isset($_POST['Button'])){
+  $year=$_POST['txt_year'];
+  $result =($year%4==0 && $year%100!=0)||($year%400==0)?$year."是闰年":$year."不是闰年";
+  echo $result; 
+}
+?>
+        </td>
+  </tr>
+</table>
+</body>
+
+
+
+表单判断是否为空：方法一：if(!empty($_POST['Button']) && isset($_POST['Button']))
+方法二：if($_POST[Button]!="")
+
+
+界定符<<<内不允许有添加解析，结束符要在第一列，并且所在的列不能有其他的字符和空格，否则php继续运行下去。界定符格式：
+<<<str
+  格式化文本
+str
+
+“.”链接字符串，“.=”是将右边的参数附加到左边形成一个新的参数。比如：$a=111; $a.=222; echo $a;  运行的结果是111222
+
+var_dump(*);查看输出括号里的类型;
+
+addslashe()自动转义字符串，stripslashes()还原字符串
+<?php
+ $str = "我有一个'梦想'。";
+ $a = addslashes($str);     //对字符串中的特殊字符进行转义
+ echo $a."<br>";        //输出转义后的字符
+ $b = stripslashes($a);     //对转义后的字符进行还原
+ echo $b."<br>";        //将字符原义输出
+?>
+
+获取字符串长度
+<?php
+  echo strlen("xiaojing");
+?>
+
+判断注册提交的密码是否少于6位：
+<?php
+if(isset($_POST['pwd'])){
+  if(!empty($_POST['pwd'])&& strlen($_POST['pwd'])>6){
+    echo "注册成功！";
+  }else{
+    echo "<script>alert('用户的密码不能少于6位');history.back();</script>";
+  }
+}
+?>
+
+echo substr("xiaojing",1,3);//截取字符串，1是开始位置，3是截取长度(1和3可以改变)
+echo substr("xiaojing",-4,5);//-4表示从后4为开始，结果是：jing
+
+按字节比较字符串：strcmp区别大小写，strcasecmp不区别大小写；
+按自然排序法比较：strnatcmp(string str1,string str2)将字符串中的数字部分从大到小排序,再比较大小，返回boolean；如果相等，返回0;如果str1>str2,返回1;如果str1<str2,返回-1;
+strnatcasecmp()函数作用与strnatcmp()作用相似，但是不区分大小写。
+指定从源字符串的位置比较：int strncmp(string str1,string str2,int len),len为必选参数，用来指定每个字符串中参与比较字符的数量.如果字符串相等返回0，str1>str2返回1，str1<str2返回-1；
+
+strstr — 查找字符串的首次出现,该函数区分大小写。如果想要不区分大小写，请使用 stristr()。
+
+int substr_count(string haystack,string needle)，参数haystack是指定的字符串，needle是指定的字符，substr_count() 返回子字符串needle 在字符串 haystack 中出现的次数。注意 needle 区分大小写。
+example:if(sbustr_count($user,'傻逼')>0 or substr_count($user,'妈的')>0){echo "您输入的信息中含有敏感关键字";}
+
+
+
+
+
+
+显示输入的数字的绝对值经典案例，form表单提交数据的处理
+<body>
+<?php
+    function abso($num){    //定义函数abso，参数为输入的数字变量$num
+       if($num>=0){       //如果参数值不是负数
+        return $num;      //返回参数值本身
+     }
+    else{
+        return $num*(-1);   //否则如果是负数则返回参数值乘以-1，即它的绝对值
+     }
+    }
+?>
+<form name="form" method="post" action="#">
+<label>请输入数字：</label>
+<input type="text" name="num" id="num" value="<?php if(!empty($_POST['num']))
+{echo $_POST['num']; }?>"><br>
+<input type="submit" name="sub" value="提交"><p>
+</form>
+<?php
+      if(!empty($_POST['num']) && isset($_POST['num'])){
+       echo "您输入的数字是".$_POST['num']."，";
+     echo $_POST['num']."的绝对值是".abso($_POST['num']);
+    }
+?>
+</body>
+
+
+弹窗点击返回：<script>alert('成功'); history.back();</script>
+
+
+
+应用str_replace()函数替换子字符串
+<body>
+<?php  
+$str="           予人温暖，自己也更温暖。予人快乐，自己也将更快乐。这是一种境界，也是心灵上的一种拥有。在温暖里，人才不会迷失，在相互扶持中，婚姻才会更长久。就算偶有寒流来袭，只要两颗心相互取暖，又怎么会给寂寞留下可乘之机呢。";
+if(!empty($_POST['str1']) && isset($_POST['str1']) && !empty($_POST['str2']) && isset($_POST['str2'])){
+  $str2=$_POST["str2"];
+  $str1=$_POST["str1"];
+  $xiao= str_replace($str2,$str1,$str);
+}
+
+?>
+<table width="760" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="415" height="490" align="center" valign="top" background="images/bg.jpg"><table width="400" height="462" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="161" height="165">&nbsp;</td>
+          <td width="239">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="112" colspan="2" align="center"><table width="360" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="360" align="left"><span class="STYLE4">原字符串：<br>
+                  &nbsp;&nbsp;<?php echo $str;?></span></td>
+              </tr>
+            </table></td>
+        </tr>
+        <form name="form1" method="post" action="index.php">
+          <tr>
+            <td height="32" align="right"><span class="STYLE3">被替换的字符</span></td>
+            <td align="left"><input name="str2" type="text" id="str2" size="24"></td>
+          </tr>
+          <tr>
+            <td height="30" align="right"><span class="STYLE3">替换的字符</span></td>
+            <td height="30"><input name="str1" type="text" id="str1" size="24"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="center" valign="top"><input name="Submit" type="submit" id="Submit" value="提交">
+              &nbsp;&nbsp;&nbsp;&nbsp;</td>
+          </tr>
+        </form>
+      </table></td>
+    <td width="345" align="center" valign="middle" background="images/bg1.jpg"><table width="300" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="STYLE4"><?php if(!empty($_POST["str2"]) && isset($_POST["str2"])){ echo "$xiao";} ?></td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+</table>
+</body>
+
+
+foreach:遍历数组
+有两种语法： 
+foreach (array_expression as $value)
+    statement
+foreach (array_expression as $key => $value)
+    statement
+案例：
+<?php
+    $xiao=array("a","b","c");
+    $jing=array("一","二","三");
+    $price=array("10","20","50");
+    
+    print_r($xiao);
+    echo "<br>";
+    print_r($jing);
+    echo "<br>";
+    foreach($xiao as $key=>$value){
+      echo "$price['$key']";
+    }
+  ?>
+
+
+str_ireplace 说明 
+mixed str_ireplace ( mixed $search , mixed $replace , mixed $subject [, int &$count ] )
+该函数返回一个字符串或者数组。该字符串或数组是将 subject 中全部的 search 都被 replace 替换（忽略大小写）之后的结果。如果没有一些特殊的替换规则，你应该使用该函数替换带有 i 修正符的 preg_replace() 函数。
+<?php
+  $str2="xiaojing";
+  $str1="追求自我";
+  $str="xiaojing是走向成功的一条捷径";
+  echo str_ireplace($str2,$str1,$str); //输出的结果是：追求自我是走向成功的一条捷径
+?>
+
+
+
+gettype()用来取得变量的类型。返回的类型字符串可能为下列字符串其中之一：integer、double、string、array、object、unknown type
+is_numeric ( mixed var ): //检验测定变量是不是为数码或数码字符串 
+is_bool(): //检验测定变量是不是是布尔型 
+is_float(): //检验测定变量是不是是浮点型 和is_double，is_real()都同样的用法 
+is_int(): //检验测定变量是不是是整儿is_integer()同样的用法 
+is_string(): //检验测定变量是不是是字符串 
+is_object(): //检验测定变量是不是是一个对象 
+is_array(): //检验测定变量是不是是数组 
+is_null(): //检验测定变量是不是为 灭茬 值是不是是灭茬巨细写敏感
+
+bool is_bool ( mixed $var )
+如果 var 是 boolean 则返回 TRUE。
+Example #1 is_bool() 示例
+
+<?php
+$a = false;
+$b = 0;
+
+// 因为 $a 是布尔型，所以结果为真
+if (is_bool($a)) {
+    print "Yes, this is a boolean";
+}
+
+// 因为 $b 不是布尔型，所以结果为非真
+if (is_bool($b)) {
+    print "Yes, this is a boolean";
+}
+?>
+
+
+
+" * "语句中的"跟*之间有一个空格，ps:echo ltrim($str,"(:@_@");
+
+stim()函数用于去除字符串左右两边的空白字符和特殊字符，ltrim()函数去除字符串左边的空白字符和特殊字符，rtrim()函数去除字符串中右边的空白字符和特殊字符。
+ps1:
+<?php
+$str="  (:@_@  有一条路走过了总会想起！  @_@:)   ";
+echo ltrim($str);           //去除字符串左边的空白字符
+echo "<br>";            //执行换行
+echo ltrim($str," (:@_@ ");     //去除字符串左边的特殊字符@_@:)
+?> 
+
+ps2:
+<?php
+$str="  (:@_@  有一段感情经历了就再难忘记！  @_@:)   ";
+echo rtrim($str);           //去除字符串右边的字白字符
+echo "<br>";            //执行换行
+echo rtrim($str," @_@:)");      //去除字符串右边的特殊字符@_@:)
+?>
+
+ps3:
+<?php
+$str="\r\r(:@_@有一条路走过了总会想起！有一段感情经历了就再难忘记！ @_@:)      ";
+echo trim($str);            //去除字符串左右两边的空白字符
+echo "<br>";              //执行换行
+echo trim($str,"\r\r(:@_@ @_@:)");    //去除字符串左右两边的空白字符和特殊字符\r\r(: :)
+?>
+
+number_format:以千位分隔符方式格式化一个数字,number为格式化后的字符串，该函数可以有一个，两个，四个，但不能是三个。
+<?PHP
+  $number=2668.764;
+  echo number_format($number);
+  echo " <br> ";
+  echo number_format($number,2);
+  echo " <br> ";
+  $number2=123456.7832;
+  echo number_format($number2,2,"*","*");
+?>
+
+array explode(string separator,string str,[int limit]):按照指定的规则对一个字符串进行分割，返回值为数组。
+
+print_r() 显示关于一个变量的易于理解的信息。如果给出的是 string、integer 或 float，将打印变量值本身。如果给出的是 array，将会按照一定格式显示键和元素。object 与数组类似。 
+记住，print_r() 将把数组的指针移到最后边。使用 reset() 可让指针回到开始处。
+ps:
+<?php
+    $str="品牌电脑@品牌手机@男士衬衫@女士挎包";
+    $str_arr=explode("@",$str);
+    print_r($str_arr);
+  ?>
+输出为：Array ( [0] => 品牌电脑 [1] => 品牌手机 [2] => 男士衬衫 [3] => 女士挎包 )
+
+htmlentities:把字符转换为 HTML 实体.
+ps:
+<?php
+    $a="<table>
+      <tr><td>sljo</td>             </tr>
+      <tr><td>xiao</td><td>jing</td></tr>
+        </table>";
+    echo htmlentities($a); 
+  ?>
+ 输出结果为：数组$a双引号里的内容：<table><tr><td>sljo</td><tr><td>xiao</td><td>jing</td></tr></table>
+
+js(javascript)页面返回：echo "<script>alert('xiao'); history.back();</script>";
+
+preg_match — 执行一个正则表达式匹配
+论坛中查看过滤其中是否含有非法字符。ps1:
+<?php
+    $str="吉林省明日科技有限公司";
+    if(preg_match("/^吉林.科技$/",$str,$coubnts)){ //判断变量中是否包含“明日”，“科技”字符串
+      echo "<script>alert('没有指定的关键字');history.back();</script>";
+    }else{
+      echo "<script>alert('存在关键字');history.back();</script>";
+    }
+  ?>
+
+
+ 中查看过滤其中的非法字符。ps2:
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>过滤留言板中的非法字符</title>
+<style type="text/css">
+<!--
+body {
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+-->
+</style></head>
+
+<body>
+<table width="1002" height="585" border="0" align="center" cellpadding="0" cellspacing="0" background="images/bg2.jpg">
+  <tr>
+    <td width="379" height="226">&nbsp;</td>
+    <td width="445">&nbsp;</td>
+    <td width="178">&nbsp;</td>
+  </tr>
+     <form id="form1" name="form1" method="post" action="index_ok.php">
+  <tr>
+    <td height="260">&nbsp;</td>
+    <td align="center" valign="top"><table width="430" border="1" cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#99CC67">
+      <tr>
+        <td width="81" height="30" align="right" bgcolor="#FFFFFF">发布主题：</td>
+        <td width="307" align="left" bgcolor="#FFFFFF"><input name="title" type="text" id="title" size="30" /></td>
+      </tr>
+      <tr>
+        <td align="right" bgcolor="#FFFFFF">发布内容：</td>
+        <td align="left" bgcolor="#FFFFFF"><textarea name="content" cols="43" rows="13" id="content"></textarea></td>
+      </tr>
+    </table></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="99">&nbsp;</td>
+    <td align="center" valign="top"><table width="315" height="37" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="169" align="center"><input type="image" name="imageField" src="images/bg1.JPG" /></td>
+        <td width="146" align="center"><input type="image" name="imageField2" src="images/bg3.JPG" onclick="form.reset();return false;" /></td>
+      </tr>
+    </table></td>
+    <td>&nbsp;</td>
+  </tr>
+      </form>
+</table>
+</body>
+</html>
+输出结果为：吉林省****有限公司
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+正则表达式语法规则：
+行定位符：“^”表示行的开始；“$”表示行的结尾。ps:^mr，匹配mr开头的字符串，例如mrsoft,mrbook.
+字符类  ：正则表达式区分大小写，如果想要忽略大小写，可以通过“[]”来完成，但一个[]只能匹配一个字符。ps：不分大           小写输入abc:[Aa][Bb][Cc]
+选择字符：“｜”该字符可以理解为“或”的意思，ps:不分大小写输出abc：(a｜b｜c)
+连字符  ：“-”表示字符的范围，ps:[a-zA-Z]表示所有字母的大小
+排除字符：“^”这个字符在开头是表示行的开始，如果是在中间出现是“非”的意思。ps:[^a-zA-Z]的意思是匹配非字            母字符串
+限定符  ：限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。有*或+或?或{n}或{n,}或{n,m}   共6种。
+  *、+和?限定符都是贪婪的，因为它们会尽可能多的匹配文字，只有在它们的后面加上一个?就可以实现非贪婪或最小匹配。
+  　　 正则表达式的限定符有：
+  字符  描述 
+  *  匹配前面的子表达式零次或多次。例如，zo* 能匹配 "z" 以及 "zoo"。* 等价于{0,}。 
+  +  匹配前面的子表达式一次或多次。例如，'zo+' 能匹配 "zo" 以及 "zoo"，但不能匹配 "z"。+ 等价于 {1,}。 
+  ?  匹配前面的子表达式零次或一次。例如，"do(es)?" 可以匹配 "do" 或 "does" 中的"do" 。? 等价于 {0,1}。 
+  {n}  n 是一个非负整数。匹配确定的 n 次。例如，'o{2}' 不能匹配 "Bob" 中的 'o'，但是能匹配 "food" 中的两个 o。 
+  {n,}  n 是一个非负整数。至少匹配n 次。例如，'o{2,}' 不能匹配 "Bob" 中的 'o'，但能匹配 "foooood" 中的所有 o。'o{1,}' 等价于 'o+'。'o{0,}' 则等价于 'o*'。 
+  {n,m}  m 和 n 均为非负整数，其中n <= m。最少匹配 n 次且最多匹配 m 次。例如，"o{1,3}" 将匹配 "fooooood" 中的前三个 o。'o{0,1}' 等价于 'o?'。请注意在逗号和两个数之间不能有空格。
+
+
+
+
+
+非打印字符 字符  含义 
+\cx  匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将      c 视为一个原义的 'c' 字符。 
+\f  匹配一个换页符。等价于 \x0c 和 \cL。 
+\n  匹配一个换行符。等价于 \x0a 和 \cJ。 
+\r  匹配一个回车符。等价于 \x0d 和 \cM。 
+\s  匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。 
+\S  匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。 
+\t  匹配一个制表符。等价于 \x09 和 \cI。 
+\v  匹配一个垂直制表符。等价于 \x0b 和 \cK。 
+
+特别字符 说明 
+$ 匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 '\n' 或 '\r'。要匹配 $ 字符本身，请使用 \$。 
+( ) 标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 \( 和 \)。 
+* 匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 \*。 
++ 匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 \+。 
+. 匹配除换行符 \n之外的任何单字符。要匹配 .，请使用 \。 
+[  标记一个中括号表达式的开始。要匹配 [，请使用 \[。 
+? 匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。 
+\ 将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， 'n' 匹配字符 'n'。'\n' 匹配换行符。序列 '\\' 匹配 "\"，而 '\(' 则匹配 "("。 
+^ 匹配输入字符串的开始位置，除非在方括号表达式中使用，此时它表示不接受该字符集合。要匹配 ^ 字符本身，请使用 \^。 
+{ 标记限定符表达式的开始。要匹配 {，请使用 \{。 
+| 指明两项之间的一个选择。要匹配 |，请使用 \|。 
+
+
+反斜杠指定的预义字符集
+/d  任意一个十进制数字，相当于[0-9]
+/D  任意一个非十进制数字
+/s  任意一个空白字符（空格，换行符，换页符，回车符，水平制表符），相当于[\f\n\r]
+/S  任意一个
+/w  任意一个
+/W  任意一个
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+explode()：应用于将字符串转换成数组。ps:
+<?php
+  $str="xiao,jing,jia,you";
+  $strs=explode(",",$str);
+  print_r($strs);
+?>
+
+implode():应用于将数组转换为一个新的字符串。ps:
+<?php
+  $str=array("xiao","jing","jia","you");
+  $string=implode(" ",$str);
+  print_r($string);
+?>
+
+应用count()函数对数组中的元素个数进行统计。ps:
+<?php
+  $array=array("PHP","asp","JSP");
+  $count=count($array);
+  echo $count;  //输出结果是：3
+?>
+
+bool sort ( array &$array [, int $sort_flags = SORT_REGULAR ] )
+sort()：数字数组进行升序排序。ps:
+<?php
+ $array=array(1,4,8,25,0,42,88,66);
+ $array1=sort($array);   //用sort()函数对$array数组进行升序排序，并返回新数组$array1
+ for($i=0;$i<count($array);$i++){ //应用for循环语句输出数组元素
+   echo $array[$i]."&nbsp;&nbsp;";  //输出结果：0  1  4  8  25  42  66  88  
+ }
+?>
+sort()：把元素按照字符串进行比较，ps:
+<?php
+  $array=array(1,4,8.25,0,42,88,66);
+  $array2=sort($array,SORT_STRING);
+  for($i=0;$i<count($array);$i++){
+    echo $array[$i]."&nbsp;&nbsp;"; //输出结果：0  1  25  4  42  66  8  88   
+  }
+?>
+
+rsort()：对数组进行降序排序。ps:
+  <?php
+    $array=array(1=>"a",2=>"b",3=>"c");
+    $arrays=rsort($array);
+    for($i=0;$i<count($array);$i++){
+      echo $array[$i]."&nbsp;&nbsp"; //输出结果：c  b  a  
+    }
+  ?>、
+
+关联数组：数组中下标不是数字的数组，ps:
+$a=array("x"=>"xiao");
+
+ksort():对关联数组的关键字进行排序
+<?php
+  $array = array ("p"=>"php","a"=>"asp","j"=>"jsp");      //声明数组
+  asort($array);
+  print_r($array);
+?>
+
+asort():对关联数组的元素进行排序
+<?php
+  $array = array ("p"=>1,"a"=>2,"j"=>3);      //声明数组
+  asort($array);
+  print_r($array);
+?>
+
+
+获取当时间戳
+<?php
+  echo "时间戳：".time()."<br>";        //返回当前的时间戳
+  echo "日期：".date("Y-m-d",time())."<br>";     //使用date函数输出格式化后的日期
+  echo "时间：".date("H:i:s",time());          //使用date函数输出格式化后的时间
+?>
+
+
+输出下个星期日期：
+<?php
+  date_default_timezone_set("Asia/Shanghai");
+  $nextweek=time()+(7*24*60*60);
+  echo time()."<br>";
+  echo "Now:".date("Y-m-d")."<br>";
+  echo "nwxtweek:".date("Y-m-d",$nextweek);
+?>
+
+将英文文本的日期时间描述解析为UNIX时间戳。
+<?php
+  date_default_timezone_set("Asia/Shanghai");
+  echo strtotime("now"),"\r";
+  echo "输出时间:".date("Y-m-d H:i:s",strtotime("now")),"<br>";
+  echo strtotime("27 February 2013"),"\n";
+  echo "输出时间:".date("Y-m-d H:i:s",strtotime("27 February 2013"))."<br>";
+  echo strtotime("+3 day"),"\n";
+  echo "输出时间:".date("Y-m-d H:i:s",strtotime("+3 day")),"<br>";
+  echo strtotime("+1 week")."<br>";
+  echo strtotime("+1 week 2 days 3hours 4seconds")."<br>";
+  echo strtotime("next Thursday")."<br>";
+  echo strtotime("last Monday"),"\n";
+?>
+
+
+格式字串可以识别以下 format 参数的字符串
+format 字符
+d 月份中的第几天，有前导零的 2 位数字 01 到 31 
+D 星期中的第几天，文本表示，3 个字母 Mon 到 Sun 
+j 月份中的第几天，没有前导零 1 到 31 
+l（"L"的小写字母） 星期几，完整的文本格式 Sunday 到 Saturday 
+N ISO-8601 格式数字表示的星期中的第几天（PHP 5.1.0 新加） 1（表示星期一）到 7（表示星期天） 
+S 每月天数后面的英文后缀，2 个字符 st，nd，rd 或者 th。可以和 j 一起用 
+w 星期中的第几天，数字表示 0（表示星期天）到 6（表示星期六） 
+z 年份中的第几天 0 到 365 
+星期 --- --- 
+W ISO-8601 格式年份中的第几周，每周从星期一开始（PHP 4.1.0 新加的） 例如：42（当年的第 42 周） 
+月 --- --- 
+F 月份，完整的文本格式，例如 January 或者 March January 到 December 
+m 数字表示的月份，有前导零 01 到 12 
+M 三个字母缩写表示的月份 Jan 到 Dec 
+n 数字表示的月份，没有前导零 1 到 12 
+t 给定月份所应有的天数 28 到 31 
+年 --- --- 
+L 是否为闰年 如果是闰年为 1，否则为 0 
+o ISO-8601 格式年份数字。这和 Y 的值相同，只除了如果 ISO 的星期数（W）属于前一年或下一年，则用那一年。（PHP 5.1.0 新加） Examples: 1999 or 2003 
+Y 4 位数字完整表示的年份 例如：1999 或 2003 
+y 2 位数字表示的年份 例如：99 或 03 
+时间 --- --- 
+a 小写的上午和下午值 am 或 pm 
+A 大写的上午和下午值 AM 或 PM 
+B Swatch Internet 标准时 000 到 999 
+g 小时，12 小时格式，没有前导零 1 到 12 
+G 小时，24 小时格式，没有前导零 0 到 23 
+h 小时，12 小时格式，有前导零 01 到 12 
+H 小时，24 小时格式，有前导零 00 到 23 
+i 有前导零的分钟数 00 到 59> 
+s 秒数，有前导零 00 到 59> 
+u 毫秒 （PHP 5.2.2 新加）。需要注意的是 date() 函数总是返回 000000 因为它只接受 integer 参数， 而 DateTime::format() 才支持毫秒。  示例: 654321 
+时区 --- --- 
+e 时区标识（PHP 5.1.0 新加） 例如：UTC，GMT，Atlantic/Azores 
+I 是否为夏令时 如果是夏令时为 1，否则为 0 
+O 与格林威治时间相差的小时数 例如：+0200 
+P 与格林威治时间（GMT）的差别，小时和分钟之间有冒号分隔（PHP 5.1.3 新加） 例如：+02:00 
+T 本机所在的时区 例如：EST，MDT（【译者注】在 Windows 下为完整文本格式，例如"Eastern Standard Time"，中文版会显示"中国标准时间"）。 
+Z 时差偏移量的秒数。UTC 西边的时区偏移量总是负的，UTC 东边的时区偏移量总是正的。 -43200 到 43200 
+完整的日期／时间 --- --- 
+c ISO 8601 格式的日期（PHP 5 新加） 2004-02-12T15:19:21+00:00 
+r RFC 822 格式的日期 例如：Thu, 21 Dec 2000 16:01:07 +0200 
+U 从 Unix 纪元（January 1 1970 00:00:00 GMT）开始至今的秒数 参见 time() 
+
+
+getdate — 取得日期／时间信息.ps
+<?php
+  date_default_timezone_set("Asia/Shanghai");
+  $arr=getdate();
+  print_r($arr);
+?>
+输出结果：
+Array
+(
+    [seconds] => 40
+    [minutes] => 58
+    [hours]   => 21
+    [mday]    => 17
+    [wday]    => 2
+    [mon]     => 6
+    [year]    => 2003
+    [yday]    => 167
+    [weekday] => Tuesday
+    [month]   => June
+    [0]       => 1055901520
+)
+
+setlocale — 设置地区信息。ps:
+<?php
+  setlocale(LC_ALL,"en_US");          //设置为美国本地环境
+  echo "美国格式：".strftime("Today is %A");
+  echo "<p>";
+  setlocale(LC_ALL,"chs");          //设置为简体中文
+  echo "中文简体格式：".strftime("今天是%A"); 
+  echo "<p>";
+  setlocale(LC_ALL,"cht");          //设置为繁体中文
+  echo "<p>";
+  echo "繁体中文格式：".strftime("今天是%A");
+?>
+
+checkdate — 验证一个格里高里日期,检查由参数构成的日期的合法性。如果每个参数都正确定义了则会被认为是有效的。ps:
+<?php
+var_dump(checkdate(12, 31, 2000));
+var_dump(checkdate(2, 29, 2001));
+?> 
+
+phpmyadmin
+使用SQL语句删除数据库：delete from db_xiaojingtest where name="萧劲"
+phpmyadmin的界面，创建数据库编码格式一般选择utf8_unicode_ci
+添加数据：选择数据库》》结构》》表》》选择“插入”
+修改数据：选择数据库》》选择数据表》》浏览》》选择“编辑”，如果没有“编辑”选项，那是字段没有设主键。
+1）VARCHAR，文本类型
+2）INT，整数类型
+3）FLOAT，浮点数类型
+4）DATE，日期型
+选择INT类型，在后面的额外中选择 auto_increment 就可以自动添加id
+
+
+如果您还不能察觉$exec有什么错误的话，可以复制这个sql语句到phpmyadmin中执行，看看它的出错信息。
+
+php与mysql编码问题乱码问题，网页设为为：utf-8,连接数据库mysql_query设utf8。ps;
+("set names gbk"); 改成mysql_query("set names utf8");  
+
+
+PHP操作MySQL数据库的过程分为5步：
+1 连接MySQL服务器
+2 选择数据库
+3 执行SQL语句
+4 关闭结果集
+5 断开与MySQL服务器的连接
+
+mysql_connect — 打开一个到 MySQL 服务器的连接.ps: 
+连接数据库(判断数据库是否连接成功)
+<?php
+  $host="127.0.0.1";  //MySQL服务器地址
+  $userName="root"; //用户名
+  $password="";   //密码
+  if($connID= mysql_connect($host,$userName,$password)){
+    //建立与MySQL数据库的连接，并弹出提示对话框
+    echo "<script language='javascript'>alert('数据库连接成功');</script>";
+  }else{
+    echo "<script language='javascript'>alert('数据库连接失败');</script>";
+  }
+?>
+
+mysql_select_db — 选择 MySQL 数据库。ps
+判断数据库是否选择成功！
+<?php
+  $host="127.0.0.1";  //MySQL服务器地址
+  $userName="root"; //用户名
+  $password="";   //密码
+  $xiao="$xiaojing";  //数据库
+  $connID=mysql_connect($host,$userName,$password); //建立与mysql数据库服务器的连接
+  if(mysql_select_db($xiao,$connID)){         //选择数据库
+    echo "数据库选择成功！";
+  }else{
+    echo "数据库选择失败！";
+  }
+
+?>
+
+mysql_query — 发送一条 MySQL 查询
+<?php
+$host = "localhost";  
+$userName = "root";    
+$password = "";    
+$dbName = "xiaojing";   
+
+$connID = mysql_connect($host, $userName, $password);   
+mysql_select_db($dbName, $connID);     
+mysql_query("set names utf8");    
+echo "<table border=\"1px\" align=\"center\">
+         <tr>
+         <td>a</td>
+       <td>b</td>
+       <td>c</td>
+       <td>d</td>
+       <td>e</td>
+       <td>f</td>
+     </tr>";
+$query = mysql_query("select sno, sname, class, chinese, math,english from tb_student", $connID);    
+while($result = mysql_fetch_array($query))    
+{
+    echo  "<tr>
+         <td>".$result["sno"]."</td>
+       <td>".$result["sname"]."</td>
+       <td>".$result["class"]."</td>
+       <td>".$result["chinese"]."</td>
+       <td>".$result["math"]."</td>
+       <td>".$result["english"]."</td>
+     </tr>";    
+}
+echo "</table>";
+mysql_close($connID);
+?>
+
+mysql-fetch _array()函数获取结果集。
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+
+<?php
+$host = "127.0.0.1";  
+$userName = "root"; 
+$password = "";    
+$dbName = "db_database14";  
+
+$connID = mysql_connect($host, $userName, $password);    
+mysql_select_db($dbName, $connID);     
+mysql_query("set names utf8");    
+echo "<table border=\"1px\" align=\"center\">
+         <tr>
+       <td>学号</td>
+       <td>姓名</td>
+       <td>班级</td>
+         <td>语文</td>
+       <td>数学</td>
+       <td>英语</td>
+       
+     </tr>";
+$query = mysql_query("select sno, sname, class, chinese, math ,english from tb_student", $connID);     
+while($result = mysql_fetch_array($query))     
+    echo  "<tr>
+         <td>".$result["sno"]."</td>
+       <td>".$result["sname"]."</td>
+       <td>".$result["class"]."</td>
+       <td>".$result["chinese"]."</td>
+       <td>".$result["math"]."</td>
+       <td>".$result["english"]."</td>
+     </tr>";    
+
+echo "</table>";
+mysql_close($connID);
+?>
+
+</body>
+</html>
+
+
+:hover 选择器用于选择鼠标指针浮动在上面的元素。
+
+mail("收件人地址","主题","正文","From:发件人\r\nReply-to:发件人的地址");
+<?php 
+
+ $Name = "Da Duder"; //senders name 
+$email = "email@adress.com"; //senders e-mail adress 
+$recipient = "PersonWhoGetsIt@emailadress.com"; //recipient 
+$mail_body = "The text for the mail..."; //mail body 
+$subject = "Subject for reviever"; //subject 
+$header = "From: ". $Name . " <" . $email . ">\r\n"; //optional headerfields 
+mail($recipient, $subject, $mail_body, $header); //mail command :) 
+?> 
