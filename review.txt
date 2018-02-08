@@ -85,4 +85,11 @@ echo date("Y-m-d H:i:s",strtotime('27 February 2016'));
     }
 ?>
 
+PDO 添加数据,用 exec()
+PDO:用预处理语句 prepare()和 execute()添加数据（注：多次使用 SQL，推荐使用PDO::prepaare）
+PDO 查询数据,query()返回执行查询后的结果集,(注:使用一次 SQL 语句,推荐使用PDO::query)
+PDO 查询数据:预处理语句-prepare()方法做查询的准备工作，和 execute()执行查询。(这个有待证实，目前暂未成功过_xj)
+
+
+
 学到PDO这里
