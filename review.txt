@@ -66,3 +66,21 @@ preg_match —执行一个正则表达式匹配
 \S      任意一个非空白字符
 \w      任意一个单词字符
 \W      任意个非单词字符
+
+strtotime()
+echo date("Y-m-d H:i:s",strtotime('27 February 2016'));
+
+<?php
+    $dbms = 'mysql';
+    $host = 'localhost';
+    $user = 'root';
+    $pwd = 'skyuse2017';
+    $dbName = 'test';
+    $dsn = "$dbms:host=$host;dbname=$dbName";
+    try{
+        $pdo = new PDO($dsn,$user,$pwd);
+        echo 'king good';
+    }catch(exception $e){
+        echo $e->getMessage();
+    }
+?>
