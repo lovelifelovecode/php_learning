@@ -84,3 +84,5 @@ echo date("Y-m-d H:i:s",strtotime('27 February 2016'));
         echo $e->getMessage();
     }
 ?>
+
+学到PDO这里
