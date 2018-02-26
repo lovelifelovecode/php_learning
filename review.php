@@ -17,6 +17,7 @@ substr_replace()
 strpos()
 explode()
 implode()
+join()
 sort()
 rsort()
 asrot()
@@ -50,7 +51,7 @@ round()
 opendir()
 readdir()
 closedir()
-list()
+get_class()
 gettype()用来取得变量的类型。返回的类型字符串可能为下列字符串其中之一：integer、double、string、array、object、unknown type
 is_numeric ( mixed var ): //检验测定变量是不是为数码或数码字符串 
 is_bool(): //检验测定变量是不是是布尔型 
@@ -794,6 +795,206 @@ Example #2 有条件的函数
   function bar(){
     echo "I exist immediately upon program start.\n";
   }
+?>
+
+foreach ¶
+Note:当 foreach 开始执行时，数组内部的指针会自动指向第一个单元。这意味着不需要在 foreach 循环之前调用 reset()。
+由于 foreach 依赖内部数组指针，在循环中修改其值将可能导致意外的行为。 
+
+ 可以很容易地通过在 $value 之前加上 & 来修改数组的元素。此方法将以引用赋值而不是拷贝一个值。最后用unset取消掉引用.
+Warning:数组最后一个元素的 $value 引用在 foreach 循环之后仍会保留。建议使用 unset() 来将其销毁。
+<?php
+  $arr = array(1, 2, 3, 4);
+  foreach ($arr as &$value) {
+      $value = $value * 2;
+  }
+  // $arr is now array(2, 4, 6, 8)
+  unset($value); // 最后取消掉引用
+?>
+
+list
+(PHP 4, PHP 5, PHP 7)
+list — 把数组中的值赋给一组变量 
+像 array() 一样，这不是真正的函数，而是语言结构。 list() 可以在单次操作内就为一组变量赋值。 
+
+Note:list() 仅能用于数字索引的数组，并假定数字索引从 0 开始。
+
+Warning
+PHP 5 里，list() 从最右边的参数开始赋值； PHP 7 里，list() 从最左边的参数开始赋值。
+如果你用单纯的变量，不用担心这一点。 但是如果你用了具有索引的数组，通常你期望得到的结果和在 list() 中写的一样是从左到右的，但在 PHP 5 里实际上不是， 它是以相反顺序赋值的。
+通常而言，不建议依赖于操作的顺序，在未来可能会再次发生修改。
+
+Example #4 在 list() 中使用数组索引
+<?php
+  $info = array('coffee', 'brown', 'caffeine');
+  list($a[0], $a[1], $a[2]) = $info;
+  var_dump($a);
+?>
+产生如下输出（注意单元顺序和 list() 语法中所写的顺序的比较）：
+Output of the above example in PHP 7:
+
+array(3) {
+  [0]=>
+  string(6) "coffee"
+  [1]=>
+  string(5) "brown"
+  [2]=>
+  string(8) "caffeine"
+}
+
+Output of the above example in PHP 5:
+array(3) {
+  [2]=>
+  string(8) "caffeine"
+  [1]=>
+  string(5) "brown"
+  [0]=>
+  string(6) "coffee"
+}
+
+Example #5 list() 和索引顺序定义
+list() 使用 array 索引的顺序和它何时定义无关。
+<?php
+  $foo = array(2 => 'a', 'foo' => 'b', 0 => 'c');
+  $foo[1] = 'd';
+  list($x, $y, $z) = $foo;
+  var_dump($foo, $x, $y, $z);
+?>
+得到输出（注意比较 list() 所写的元素顺序） 
+
+用 list() 给嵌套的数组解包 ¶
+(PHP 5 >= 5.5.0, PHP 7)
+PHP 5.5 增添了遍历一个数组的数组的功能并且把嵌套的数组解包到循环变量中，只需将 list() 作为值提供。
+例如：
+<?php
+  $array = [
+      [1, 2],
+      [3, 4],
+  ];
+  foreach ($array as list($a, $b)) {
+      // $a contains the first element of the nested array,
+      // and $b contains the second element.
+      echo "A: $a; B: $b\n";
+  }
+?>
+
+list() 中的单元可以少于嵌套数组的，此时多出来的数组单元将被忽略：
+<?php
+  $array = [
+      [1, 2],
+      [3, 4],
+  ];
+  foreach ($array as list($a)) {
+      // Note that there is no $b here.
+      echo "$a\n";
+  }
+?>
+
+如果 list() 中列出的单元多于嵌套数组则会发出一条消息级别的错误信息：
+<?php
+  $array = [
+      [1, 2],
+      [3, 4],
+  ];
+  foreach ($array as list($a, $b, $c)) {
+      echo "A: $a; B: $b; C: $c\n";
+  }
+?>
+
+declare ¶
+(PHP 4, PHP 5, PHP 7)
+declare 结构用来设定一段代码的执行指令。declare 的语法和其它流程控制结构相似：
+declare (directive)
+    statement
+
+declare 代码段中的 statement 部分将被执行——怎样执行以及执行中有什么副作用出现取决于 directive 中设定的指令。
+
+
+<?php
+  // these are the same:
+  // you can use this:
+  declare(ticks=1) {
+      // entire script here
+  }
+  // or you can use this:
+  declare(ticks=1);
+  // entire script here
+?>
+
+
+Example #1 Tick 的用法示例
+<?php
+  declare(ticks=1);
+  // A function called on each tick event
+  function tick_handler()
+  {
+      echo "tick_handler() called\n";
+  }
+  register_tick_function('tick_handler');
+  $a = 1;
+  if ($a > 0) {
+      $a += 2;
+      print($a);
+  }
+?>
+
+Example #2 Ticks 的用法示例
+<?php
+  function tick_handler()
+  {
+    echo "tick_handler() called\n";
+  }
+  $a = 1;
+  tick_handler();
+  if ($a > 0) {
+      $a += 2;
+      tick_handler();
+      print($a);
+      tick_handler();
+  }
+  tick_handler();
+?>
+
+可以用 encoding 指令来对每段脚本指定其编码方式。
+
+
+Example #3 对脚本指定编码方式
+<?php
+  declare(encoding='ISO-8859-1');
+  // code here
+?>
+
+更多信息见返回值。
+Note: 注意既然 return 是语言结构而不是函数，因此其参数没有必要用括号将其括起来。通常都不用括号，实际上也应该不用，这样可以降低 PHP 的负担。 
+
+Note: 如果没有提供参数，则一定不能用括号，此时返回 NULL。如果调用 return 时加上了括号却又没有参数会导致解析错误。 
+
+Note: 当用引用返回值时永远不要使用括号，这样行不通。只能通过引用返回变量，而不是语句的结果。如果使用 return ($a); 时其实不是返回一个变量，而是表达式 ($a) 的值（当然，此时该值也正是 $a 的值）。 
+
+函数默认值必须是常量表达式，不能是诸如变量，类成员，或者函数调用等。
+
+ 注意当使用默认参数时，任何默认参数必须放在任何非默认参数的右侧；否则，函数将不会按照预期的情况工作。考虑下面的代码片断：
+Example #5 函数默认参数的不正确用法
+<?php
+  function test($type = "king",$x){
+      return " $type >>>>> $x";
+  }
+  echo test("good");   // won't work as expected
+?>
+
+为了指定一个类型声明，类型应该加到参数名前。这个声明可以通过将参数的默认值设为NULL来实现允许传递NULL。 
+Example #7 Basic class type declaration
+<?php
+  class Ce {}
+  class De extends Ce {}
+  // This doesn't extend C.
+  class Ee {}
+  function f(Ce $c) {
+      echo get_class($c)."\n";
+  }
+  f(new Ce);
+  f(new De);
+  f(new Ee);
 ?>
 
 
