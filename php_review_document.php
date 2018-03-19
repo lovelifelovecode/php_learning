@@ -981,6 +981,18 @@ declare 代码段中的 statement 部分将被执行——怎样执行以及执�
   // entire script here
 ?>
 
+declare 结构用来设定一段代码的执行指令，它的语法结构如下：
+　　declare (directive)
+　　statement
+　　不懂？通俗解释如下：
+　　ticks参数表示运行多少语句调用一次register_tick_function的函数。
+　　register_tick_function函数定义了每个tick事件发生时的处理函数。那么什么是tick事件呢？
+　　tick是一个事件。
+　　tick事件在PHP每执行N条低级语句就发生一次，N由declare语句指定。
+　　可以用register_tick_function()来指定tick事件发生时应该执行的操作。
+　　问题又来了， 1688gfl.com 什么是低级语句呢？它包括：
+　　简单语句：空语句（就一个；号），return, break, continue, throw, goto, global, static, unset, echo,  内置的HTML文本，分号结束的表达式等均算一个语句。
+　　复合语句：完整的if/elseif, while, do...while, for, foreach, switch, try...catch等算一个语句。
 
 Example #1 Tick 的用法示例
 <?php
