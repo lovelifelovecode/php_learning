@@ -905,3 +905,17 @@ $subject = "Subject for reviever"; //subject
 $header = "From: ". $Name . " <" . $email . ">\r\n"; //optional headerfields 
 mail($recipient, $subject, $mail_body, $header); //mail command :) 
 ?> 
+
+php有没有可以检测函数执行时间的功能 
+<?php
+  $start_time = microtime(true);
+
+  for($i=1;$i<=1000;$i++){
+
+    echo $i.'<br>';
+  }
+
+  $end_time = microtime(true);
+
+  echo '循环执行时间为：'.($end_time-$start_time).' s';
+?>
